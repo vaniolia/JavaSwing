@@ -1,13 +1,13 @@
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+public class actions {
 
-public class actions extends ActionListener{
-
-    public void actionButton(ActionEvent e){
-
-        System.out.println("Button wurde geklickt");
-
+    /*Button 1 Action*/
+    public void actionPerformed(ActionEvent e) {
+        if(e.getActionCommand().equals("Test")){
+            System.out.println("Button wurde geklickt");
+        }
     }
+
 
 }

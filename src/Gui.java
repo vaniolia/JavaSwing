@@ -1,7 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 
-public class Gui extends JFrame {
+public class Gui extends JFrame{
 
     JFrame jf = new JFrame();
     JPanel p = new JPanel();
@@ -45,8 +45,6 @@ public class Gui extends JFrame {
         ImageIcon printIcon = new ImageIcon("icons8-stop-24.png");
         button.setIcon(printIcon);
 
-
-
         return button;
     }
 
@@ -54,10 +52,8 @@ public class Gui extends JFrame {
     public JTextField createTextField(){
 
         JTextField textField = new JTextField();
-        textField.setPreferredSize(new Dimension(200,20));
+        textField.setPreferredSize(new Dimension(250,20));
 
         return textField;
     }
-
-
 }
