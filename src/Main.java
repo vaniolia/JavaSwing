@@ -1,9 +1,7 @@
 
-public class Main {
-    static void main(String[] args) {
+void main() {
 
-        Gui g = new Gui();
-        g.createView();
+    Gui g = new Gui();
+    g.createView();
 
-    }
 }
