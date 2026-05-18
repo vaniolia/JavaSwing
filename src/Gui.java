@@ -1,5 +1,4 @@
 import javax.swing.*;
-import java.awt.*;
 
 public class Gui extends JFrame{
 
@@ -11,8 +10,9 @@ public class Gui extends JFrame{
     //View
     public void createView(){
 
-        JTextField textField = createTextField();
-        JButton button = createButton(textField);
+        JTextField textField_1 = createTextField();
+        JLabel error_1 = showError_1();
+        JButton button_1 = createButton(textField_1,error_1);
         JLabel label1 = showTitle();
 
         /*Fenster View*/
@@ -26,26 +26,27 @@ public class Gui extends JFrame{
         p.setLayout(null); //Layout is null to set bounds
 
         /* Adding everything in the panel to connect it with the view*/
-        p.add(button);
-        p.add(textField);
+        p.add(button_1);
+        p.add(textField_1);
         p.add(label1);
+        p.add(error_1);
 
     }
 
     /* Button 1 */
-    public JButton createButton(JTextField textField){
+    public JButton createButton(JTextField textField, JLabel error_1){
 
-        JButton button = new JButton("Button 1");
+        JButton button_1 = new JButton("Button 1");
 
         //button.setPreferredSize(new Dimension(100,20));
-        button.setBounds(250,100,100,20); //Set Location bound and size
+        button_1.setBounds(250,100,100,20); //Set Location bound and size
 
-        button.setFocusable(false); //No focus anymore
+        button_1.setFocusable(false); //No focus anymore
 
         //Connect to actions
-        button.addActionListener(new actions(textField));
+        button_1.addActionListener(new actions(textField,error_1));
 
-        return button;
+        return button_1;
     }
 
     /* TextField 1 */
@@ -67,4 +68,15 @@ public class Gui extends JFrame{
 
         return label1;
     }
+
+    public JLabel showError_1(){
+
+        JLabel error_1 = new JLabel("Keine Angabe wurde gemacht"); //Add Error Text
+        error_1.setBounds(30,115,200,30);
+        error_1.setVisible(false);
+
+
+        return error_1;
+    }
+
 }
