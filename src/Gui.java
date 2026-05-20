@@ -14,6 +14,16 @@ public class Gui extends JFrame{
         JLabel error_1 = showError_1();
         JButton button_1 = createButton(textField_1,error_1);
         JLabel label1 = showTitle();
+        JButton number1 = calculatorButtons("1", 400, 100);
+        JButton number2 = calculatorButtons("2", 500,100);
+        JButton number3 = calculatorButtons("3",600,100);
+        JButton number4 = calculatorButtons("4",400,200);
+        JButton number5 = calculatorButtons("5",500,200);
+        JButton number6 = calculatorButtons("6",600,200);
+        JButton number7 = calculatorButtons("7",400,300);
+        JButton number8 = calculatorButtons("8",500,300);
+        JButton number9 = calculatorButtons("9",600,300);
+        JButton number0 = calculatorButtons("0",400,400);
 
         /*Fenster View*/
         jf.setTitle("Test Fenster");
@@ -30,6 +40,16 @@ public class Gui extends JFrame{
         p.add(textField_1);
         p.add(label1);
         p.add(error_1);
+        p.add(number1);
+        p.add(number2);
+        p.add(number3);
+        p.add(number4);
+        p.add(number5);
+        p.add(number6);
+        p.add(number7);
+        p.add(number8);
+        p.add(number9);
+        p.add(number0);
 
     }
 
@@ -38,7 +58,6 @@ public class Gui extends JFrame{
 
         JButton button_1 = new JButton("Button 1");
 
-        //button.setPreferredSize(new Dimension(100,20));
         button_1.setBounds(250,100,100,20); //Set Location bound and size
 
         button_1.setFocusable(false); //No focus anymore
@@ -48,6 +67,18 @@ public class Gui extends JFrame{
 
         return button_1;
     }
+
+    //Set buttons for calculator
+    public JButton calculatorButtons(String number, int x, int y){
+        JButton numberX = new JButton(number);
+
+        numberX.setBounds(x,y,80,80);
+        numberX.setFocusable(false);
+
+        return numberX;
+    }
+
+
 
     /* TextField 1 */
     public JTextField createTextField(){
