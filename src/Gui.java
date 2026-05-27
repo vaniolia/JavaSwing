@@ -12,7 +12,7 @@ public class Gui extends JFrame{
 
         JTextField textField_1 = createTextField();
         JLabel error_1 = showError_1();
-        JButton button_1 = createButton(textField_1,error_1);
+
         JLabel label1 = showTitle();
         JButton number1 = calculatorButtons("1", 400, 100);
         JButton number2 = calculatorButtons("2", 500,100);
@@ -24,6 +24,14 @@ public class Gui extends JFrame{
         JButton number8 = calculatorButtons("8",500,300);
         JButton number9 = calculatorButtons("9",600,300);
         JButton number0 = calculatorButtons("0",400,400);
+        JButton minus = calculatorButtons("-",500,400);
+        JButton plus = calculatorButtons("+",600,400);
+        JButton multi = calculatorButtons("*",700,400);
+        JButton divided = calculatorButtons(":",700,300);
+        JButton enter = calculatorOperationEnter("Enter", 700,100);
+
+        JButton button_1 = createButton(textField_1,error_1, number1,number2,number3,number4,number5,number6,number7,
+                number8,number9,number0,minus,plus,multi,divided,enter);
 
         /*Fenster View*/
         jf.setTitle("Test Fenster");
@@ -40,6 +48,8 @@ public class Gui extends JFrame{
         p.add(textField_1);
         p.add(label1);
         p.add(error_1);
+
+
         p.add(number1);
         p.add(number2);
         p.add(number3);
@@ -50,11 +60,35 @@ public class Gui extends JFrame{
         p.add(number8);
         p.add(number9);
         p.add(number0);
+        p.add(minus);
+        p.add(plus);
+        p.add(multi);
+        p.add(divided);
+        p.add(enter);
+
+        number1.setVisible(false);
+        number2.setVisible(false);
+        number3.setVisible(false);
+        number4.setVisible(false);
+        number5.setVisible(false);
+        number6.setVisible(false);
+        number7.setVisible(false);
+        number8.setVisible(false);
+        number9.setVisible(false);
+        number0.setVisible(false);
+        minus.setVisible(false);
+        plus.setVisible(false);
+        multi.setVisible(false);
+        divided.setVisible(false);
+        enter.setVisible(false);
 
     }
 
     /* Button 1 */
-    public JButton createButton(JTextField textField, JLabel error_1){
+    public JButton createButton
+    (JTextField textField, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
+     JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
+     JButton minus, JButton plus, JButton multi, JButton divided, JButton enter){
 
         JButton button_1 = new JButton("Button 1");
 
@@ -63,7 +97,8 @@ public class Gui extends JFrame{
         button_1.setFocusable(false); //No focus anymore
 
         //Connect to actions
-        button_1.addActionListener(new actions(textField,error_1));
+        button_1.addActionListener(new actions(textField,error_1, number1,number2,number3,number4,number5,number6,number7,
+                number8,number9,number0,minus,plus,multi,divided,enter));
 
         return button_1;
     }
@@ -76,6 +111,19 @@ public class Gui extends JFrame{
         numberX.setFocusable(false);
 
         return numberX;
+    }
+
+    //Button for result
+    public JButton calculatorOperationEnter(String enter, int x, int y){
+        JButton operationEnter = new JButton();
+
+        operationEnter.setText("<html>E<br>N<br>T<br>E<br>R</html>");
+
+        operationEnter.setBounds(x,y, 80,180);
+
+        operationEnter.setFocusable(false);
+
+       return operationEnter;
     }
 
 
