@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 public class actions implements ActionListener {
 
     public JTextField textField;
+    public JLabel headerLabel;
     public JLabel error_1;
     public JButton number1;
     public JButton number2;
@@ -24,11 +25,12 @@ public class actions implements ActionListener {
 
 
     //Constructor
-    public actions(JTextField textField, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
+    public actions(JTextField textField,JLabel headerLabel, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
                    JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
                    JButton minus, JButton plus, JButton multi, JButton divided, JButton enter){
 
         this.textField = textField;
+        this.headerLabel = headerLabel;
         this.error_1 = error_1;
         this.number1 = number1;
         this.number2 = number2;
@@ -45,6 +47,10 @@ public class actions implements ActionListener {
         this.multi = multi;
         this.divided = divided;
         this.enter = enter;
+    }
+
+    public actions() {
+        textField = new JTextField();
     }
 
 
@@ -72,6 +78,8 @@ public class actions implements ActionListener {
             divided.setVisible(true);
             enter.setVisible(true);
 
+            headerLabel.setText("Calculator");
+            headerLabel.setBounds(500,50,100,20);
 
 
 
@@ -114,6 +122,8 @@ public class actions implements ActionListener {
             multi.setVisible(false);
             divided.setVisible(false);
             enter.setVisible(false);
+
+            headerLabel.setVisible(false);
 
             System.out.println("Keine Angaben wurden gemacht");
         }

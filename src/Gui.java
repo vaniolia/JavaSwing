@@ -3,17 +3,22 @@ import javax.swing.*;
 public class Gui extends JFrame{
 
     JFrame jf = new JFrame();
-    JPanel p = new JPanel(); //Panel for Button 1
+    JPanel p = new JPanel(); //Panel for every object to see
 
+    public static String title = "Test with Java Swing";
     public static int width = 1080, height = 900;
 
     //View
     public void createView(){
 
-        JTextField textField_1 = createTextField();
+        actions a = new actions();
+        a.textField = createTextField();
+
+        //JTextField textField_1 = createTextField();
         JLabel error_1 = showError_1();
 
         JLabel label1 = showTitle();
+
         JButton number1 = calculatorButtons("1", 400, 100);
         JButton number2 = calculatorButtons("2", 500,100);
         JButton number3 = calculatorButtons("3",600,100);
@@ -30,7 +35,7 @@ public class Gui extends JFrame{
         JButton divided = calculatorButtons(":",700,300);
         JButton enter = calculatorOperationEnter("Enter", 700,100);
 
-        JButton button_1 = createButton(textField_1,error_1, number1,number2,number3,number4,number5,number6,number7,
+        JButton button_1 = createButton(a.textField,label1,error_1, number1,number2,number3,number4,number5,number6,number7,
                 number8,number9,number0,minus,plus,multi,divided,enter);
 
         /*Fenster View*/
@@ -45,7 +50,7 @@ public class Gui extends JFrame{
 
         /* Adding everything in the panel to connect it with the view*/
         p.add(button_1);
-        p.add(textField_1);
+        p.add(a.textField);
         p.add(label1);
         p.add(error_1);
 
@@ -86,7 +91,7 @@ public class Gui extends JFrame{
 
     /* Button 1 */
     public JButton createButton
-    (JTextField textField, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
+    (JTextField textField, JLabel headerLabel,JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
      JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
      JButton minus, JButton plus, JButton multi, JButton divided, JButton enter){
 
@@ -97,7 +102,7 @@ public class Gui extends JFrame{
         button_1.setFocusable(false); //No focus anymore
 
         //Connect to actions
-        button_1.addActionListener(new actions(textField,error_1, number1,number2,number3,number4,number5,number6,number7,
+        button_1.addActionListener(new actions(textField,headerLabel,error_1,number1,number2,number3,number4,number5,number6,number7,
                 number8,number9,number0,minus,plus,multi,divided,enter));
 
         return button_1;
@@ -141,7 +146,7 @@ public class Gui extends JFrame{
     /*Title*/
     public JLabel showTitle(){
 
-        JLabel label1 = new JLabel("Test with Java Swing"); //Add Text
+        JLabel label1 = new JLabel(title); //Add Text
         label1.setBounds(450, 30, 200, 30); //Set Location bound and size
 
 
