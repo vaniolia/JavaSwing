@@ -22,12 +22,16 @@ public class actions implements ActionListener {
     public JButton multi;
     public JButton divided;
     public JButton enter;
+    public JButton delete;
+    public JLabel calculatorInsertLabel;
+
+    boolean minusClicked = false;
 
 
     //Constructor
     public actions(JTextField textField,JLabel headerLabel, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
                    JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
-                   JButton minus, JButton plus, JButton multi, JButton divided, JButton enter){
+                   JButton minus, JButton plus, JButton multi, JButton divided, JButton enter, JButton delete, JLabel calculatorInsertLabel) {
 
         this.textField = textField;
         this.headerLabel = headerLabel;
@@ -47,6 +51,8 @@ public class actions implements ActionListener {
         this.multi = multi;
         this.divided = divided;
         this.enter = enter;
+        this.delete = delete;
+        this.calculatorInsertLabel = calculatorInsertLabel;
     }
 
     public actions() {
@@ -59,7 +65,7 @@ public class actions implements ActionListener {
 
         String text = textField.getText();
 
-        if(text.equals("Calculator")){
+        if(text.equals("Calculator") || text.equals("calculator") || text.equals("taschenrechner") || text.equals("Taschenrechner") ){
 
             error_1.setVisible(false);
             number1.setVisible(true);
@@ -77,13 +83,60 @@ public class actions implements ActionListener {
             multi.setVisible(true);
             divided.setVisible(true);
             enter.setVisible(true);
+            delete.setVisible(true);
+            calculatorInsertLabel.setVisible(true);
 
             headerLabel.setText("Calculator");
             headerLabel.setBounds(500,50,100,20);
 
-
-
             System.out.println("Calculator is open");
+
+            /*Click number 1*/
+            number1.addActionListener(event -> {
+                String txt = calculatorInsertLabel.getText();
+                calculatorInsertLabel.setText(txt + "1");
+                System.out.println(txt + "1");
+            });
+
+            /*Click number 2*/
+            number2.addActionListener(event -> {
+                String txt = calculatorInsertLabel.getText();
+                calculatorInsertLabel.setText(txt + "2");
+                System.out.println(txt + "2");
+            });
+
+            /*Click number 3*/
+            number3.addActionListener(event -> {
+                String txt = calculatorInsertLabel.getText();
+                calculatorInsertLabel.setText(txt + "3");
+                System.out.println(txt + "3");
+            });
+
+
+            /*Click minus*/
+            minus.addActionListener(event -> {
+
+                String number1 = calculatorInsertLabel.getText();
+
+                if(!minusClicked){
+                    calculatorInsertLabel.setText(number1 + " - ");
+                    System.out.println(number1 + " - ");
+
+                    minusClicked = true;
+
+                } else if(!calculatorInsertLabel.getText().endsWith(" - ")) {
+                    System.out.println("Zahl kann wieder eingegeben werden");
+
+                    minusClicked = false;
+
+                } else{
+                    System.out.println("Minus wurde schon einmal geklickt");
+                }
+
+            });
+
+
+
         }else if(!text.isBlank()){
             error_1.setVisible(false);
 
@@ -102,6 +155,8 @@ public class actions implements ActionListener {
             multi.setVisible(false);
             divided.setVisible(false);
             enter.setVisible(false);
+            delete.setVisible(false);
+            calculatorInsertLabel.setVisible(false);
 
             System.out.println("Test");
         }else{
@@ -122,6 +177,8 @@ public class actions implements ActionListener {
             multi.setVisible(false);
             divided.setVisible(false);
             enter.setVisible(false);
+            delete.setVisible(false);
+            calculatorInsertLabel.setVisible(false);
 
             headerLabel.setVisible(false);
 

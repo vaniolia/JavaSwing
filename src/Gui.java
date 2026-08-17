@@ -8,6 +8,8 @@ public class Gui extends JFrame{
     public static String title = "Test with Java Swing";
     public static int width = 1080, height = 900;
 
+    public static String calulatorInsert = "";
+
     //View
     public void createView(){
 
@@ -19,24 +21,29 @@ public class Gui extends JFrame{
 
         JLabel label1 = showTitle();
 
-        JButton number1 = calculatorButtons("1", 400, 100);
-        JButton number2 = calculatorButtons("2", 500,100);
-        JButton number3 = calculatorButtons("3",600,100);
-        JButton number4 = calculatorButtons("4",400,200);
-        JButton number5 = calculatorButtons("5",500,200);
-        JButton number6 = calculatorButtons("6",600,200);
-        JButton number7 = calculatorButtons("7",400,300);
-        JButton number8 = calculatorButtons("8",500,300);
-        JButton number9 = calculatorButtons("9",600,300);
-        JButton number0 = calculatorButtons("0",400,400);
-        JButton minus = calculatorButtons("-",500,400);
-        JButton plus = calculatorButtons("+",600,400);
-        JButton multi = calculatorButtons("*",700,400);
-        JButton divided = calculatorButtons(":",700,300);
-        JButton enter = calculatorOperationEnter("Enter", 700,100);
+        JLabel calculatorInsertLabel = calculatorInsert();
+
+        JButton number1 = calculatorButtons("1", 400, 200);
+        JButton number2 = calculatorButtons("2", 500,200);
+        JButton number3 = calculatorButtons("3",600,200);
+        JButton number4 = calculatorButtons("4",400,300);
+        JButton number5 = calculatorButtons("5",500,300);
+        JButton number6 = calculatorButtons("6",600,300);
+        JButton number7 = calculatorButtons("7",400,400);
+        JButton number8 = calculatorButtons("8",500,400);
+        JButton number9 = calculatorButtons("9",600,400);
+        JButton number0 = calculatorButtons("0",400,500);
+        JButton minus = calculatorButtons("-",500,500);
+        JButton plus = calculatorButtons("+",600,500);
+        JButton multi = calculatorButtons("*",700,500);
+        JButton divided = calculatorButtons(":",700,400);
+        JButton enter = calculatorOperationEnter("Enter", 700,200);
+        JButton delete = calculatorDeleteButton("Delete", 600,600);
+
+
 
         JButton button_1 = createButton(a.textField,label1,error_1, number1,number2,number3,number4,number5,number6,number7,
-                number8,number9,number0,minus,plus,multi,divided,enter);
+                number8,number9,number0,minus,plus,multi,divided,enter,delete, calculatorInsertLabel);
 
         /*Fenster View*/
         jf.setTitle("Test Fenster");
@@ -53,6 +60,7 @@ public class Gui extends JFrame{
         p.add(a.textField);
         p.add(label1);
         p.add(error_1);
+        p.add(calculatorInsertLabel);
 
 
         p.add(number1);
@@ -70,6 +78,7 @@ public class Gui extends JFrame{
         p.add(multi);
         p.add(divided);
         p.add(enter);
+        p.add(delete);
 
         number1.setVisible(false);
         number2.setVisible(false);
@@ -86,14 +95,15 @@ public class Gui extends JFrame{
         multi.setVisible(false);
         divided.setVisible(false);
         enter.setVisible(false);
-
+        delete.setVisible(false);
+        calculatorInsertLabel.setVisible(false);
     }
 
-    /* Button 1 */
+    /* Button 1 : size/visibility */
     public JButton createButton
     (JTextField textField, JLabel headerLabel,JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
      JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
-     JButton minus, JButton plus, JButton multi, JButton divided, JButton enter){
+     JButton minus, JButton plus, JButton multi, JButton divided, JButton enter,JButton delete, JLabel calculatorInsertLabel){
 
         JButton button_1 = new JButton("Button 1");
 
@@ -103,12 +113,12 @@ public class Gui extends JFrame{
 
         //Connect to actions
         button_1.addActionListener(new actions(textField,headerLabel,error_1,number1,number2,number3,number4,number5,number6,number7,
-                number8,number9,number0,minus,plus,multi,divided,enter));
+                number8,number9,number0,minus,plus,multi,divided,enter,delete, calculatorInsertLabel));
 
         return button_1;
     }
 
-    //Set buttons for calculator
+    /* Set buttons for calculator: size/visibility */
     public JButton calculatorButtons(String number, int x, int y){
         JButton numberX = new JButton(number);
 
@@ -118,9 +128,9 @@ public class Gui extends JFrame{
         return numberX;
     }
 
-    //Button for result
+    /* Enter Button: size/visibility */
     public JButton calculatorOperationEnter(String enter, int x, int y){
-        JButton operationEnter = new JButton();
+        JButton operationEnter = new JButton(enter);
 
         operationEnter.setText("<html>E<br>N<br>T<br>E<br>R</html>");
 
@@ -131,9 +141,18 @@ public class Gui extends JFrame{
        return operationEnter;
     }
 
+    /* Delete Button: size/visibility */
+    public JButton calculatorDeleteButton(String delete, int x, int y){
+        JButton deleteButton = new JButton(delete);
 
+        deleteButton.setText("DELETE");
+        deleteButton.setBounds(x,y,180,80);
+        deleteButton.setFocusable(false);
 
-    /* TextField 1 */
+        return  deleteButton;
+    }
+
+    /* TextField 1: size/visibility */
     public JTextField createTextField(){
 
         JTextField textField_1 = new JTextField();
@@ -142,8 +161,17 @@ public class Gui extends JFrame{
         return textField_1;
     }
 
+    /* Automatic Label: size/visibility */
+    public JLabel calculatorInsert(){
+        JLabel calculatorInsert = new JLabel(calulatorInsert);
 
-    /*Title*/
+        calculatorInsert.setBounds(450, 100, 200, 20);
+
+        return calculatorInsert;
+    }
+
+
+    /* Title: size/visibility */
     public JLabel showTitle(){
 
         JLabel label1 = new JLabel(title); //Add Text
@@ -153,6 +181,7 @@ public class Gui extends JFrame{
         return label1;
     }
 
+    /* Error Message: size/visibility */
     public JLabel showError_1(){
 
         JLabel error_1 = new JLabel("Keine Angabe wurde gemacht"); //Add Error Text
