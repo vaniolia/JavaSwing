@@ -4,21 +4,18 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class UnitTests {
     @Test
     void TxtFieldAddedCalculator(){
-        actions a = new actions();
+        Gui gui = new Gui();
 
-        a.textField.setText("Calculator");
-        assertTrue(a.textField.isEnabled());
-
+        gui.textField_1.setText("Calculator");
+        assertTrue(gui.textField_1.isEnabled());
     }
 
     @Test
     void TxtFieldNull(){
-        actions a = new actions();
+        Gui gui = new Gui();
 
-        a.textField.setText(null);
-        assertTrue(a.textField.isEnabled());
-
-
+        gui.textField_1.setText(null);
+        assertTrue(gui.textField_1.isEnabled());
     }
 
 

@@ -8,41 +8,69 @@ public class Gui extends JFrame{
     public static String title = "Test with Java Swing";
     public static int width = 1080, height = 900;
 
+    //Homepage
+    public JLabel error_1;
+    public JLabel label_1;
+    public JTextField textField_1;
+
+    //Calculator Objects
     public static String calulatorInsert = "";
+
+    public JButton number0;
+    public JButton number1;
+    public JButton number2;
+    public JButton number3;
+    public JButton number4;
+    public JButton number5;
+    public JButton number6;
+    public JButton number7;
+    public JButton number8;
+    public JButton number9;
+
+    public JButton minus;
+    public JButton plus;
+    public JButton multi;
+    public JButton divided;
+    public JButton enter;
+    public JButton delete;
+
+    public JLabel calculatorInsertLabel;
+
+    public Gui(){}
 
     //View
     public void createView(){
 
         actions a = new actions();
-        a.textField = createTextField();
+        textField_1 = createTextField();
 
         //JTextField textField_1 = createTextField();
-        JLabel error_1 = showError_1();
+        error_1 = showError_1();
 
-        JLabel label1 = showTitle();
+        label_1 = showTitle();
 
-        JLabel calculatorInsertLabel = calculatorInsert();
+        calculatorInsertLabel = calculatorInsert();
 
-        JButton number1 = calculatorButtons("1", 400, 200);
-        JButton number2 = calculatorButtons("2", 500,200);
-        JButton number3 = calculatorButtons("3",600,200);
-        JButton number4 = calculatorButtons("4",400,300);
-        JButton number5 = calculatorButtons("5",500,300);
-        JButton number6 = calculatorButtons("6",600,300);
-        JButton number7 = calculatorButtons("7",400,400);
-        JButton number8 = calculatorButtons("8",500,400);
-        JButton number9 = calculatorButtons("9",600,400);
-        JButton number0 = calculatorButtons("0",400,500);
-        JButton minus = calculatorButtons("-",500,500);
-        JButton plus = calculatorButtons("+",600,500);
-        JButton multi = calculatorButtons("*",700,500);
-        JButton divided = calculatorButtons(":",700,400);
-        JButton enter = calculatorOperationEnter("Enter", 700,200);
-        JButton delete = calculatorDeleteButton("Delete", 600,600);
+        number1 = calculatorButtons("1", 400, 200);
+        number2 = calculatorButtons("2", 500,200);
+        number3 = calculatorButtons("3",600,200);
+        number4 = calculatorButtons("4",400,300);
+        number5 = calculatorButtons("5",500,300);
+        number6 = calculatorButtons("6",600,300);
+        number7 = calculatorButtons("7",400,400);
+        number8 = calculatorButtons("8",500,400);
+        number9 = calculatorButtons("9",600,400);
+        number0 = calculatorButtons("0",400,500);
+        minus = calculatorButtons("-",500,500);
+        plus = calculatorButtons("+",600,500);
+        multi = calculatorButtons("*",700,500);
+        divided = calculatorButtons(":",700,400);
+        enter = calculatorOperationEnter("Enter", 700,200);
+        delete = calculatorDeleteButton("Delete", 600,600);
 
 
 
-        JButton button_1 = createButton(a.textField,label1,error_1, number1,number2,number3,number4,number5,number6,number7,
+        JButton button_1 = createButton(textField_1,label_1,error_1, number1,number2,number3,number4,number5,number6,number7,
                 number8,number9,number0,minus,plus,multi,divided,enter,delete, calculatorInsertLabel);
 
         /*Fenster View*/
@@ -57,8 +85,8 @@ public class Gui extends JFrame{
 
         /* Adding everything in the panel to connect it with the view*/
         p.add(button_1);
-        p.add(a.textField);
-        p.add(label1);
+        p.add(textField_1);
+        p.add(label_1);
         p.add(error_1);
         p.add(calculatorInsertLabel);
 
@@ -163,28 +191,28 @@ public class Gui extends JFrame{
 
     /* Automatic Label: size/visibility */
     public JLabel calculatorInsert(){
-        JLabel calculatorInsert = new JLabel(calulatorInsert);
+        calculatorInsertLabel = new JLabel(calulatorInsert);
 
-        calculatorInsert.setBounds(450, 100, 200, 20);
+        calculatorInsertLabel.setBounds(450, 100, 200, 20);
 
-        return calculatorInsert;
+        return calculatorInsertLabel;
     }
 
 
     /* Title: size/visibility */
     public JLabel showTitle(){
 
-        JLabel label1 = new JLabel(title); //Add Text
-        label1.setBounds(450, 30, 200, 30); //Set Location bound and size
+        label_1 = new JLabel(title); //Add Text
+        label_1.setBounds(450, 30, 200, 30); //Set Location bound and size
 
 
-        return label1;
+        return label_1;
     }
 
     /* Error Message: size/visibility */
     public JLabel showError_1(){
 
-        JLabel error_1 = new JLabel("Keine Angabe wurde gemacht"); //Add Error Text
+        error_1 = new JLabel("Keine Angabe wurde gemacht"); //Add Error Text
         error_1.setBounds(30,115,200,30);
         error_1.setVisible(false);
 

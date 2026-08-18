@@ -4,127 +4,111 @@ import java.awt.event.ActionListener;
 
 public class actions implements ActionListener {
 
-    public JTextField textField;
-    public JLabel headerLabel;
-    public JLabel error_1;
-    public JButton number1;
-    public JButton number2;
-    public JButton number3;
-    public JButton number4;
-    public JButton number5;
-    public JButton number6;
-    public JButton number7;
-    public JButton number8;
-    public JButton number9;
-    public JButton number0;
-    public JButton minus;
-    public JButton plus;
-    public JButton multi;
-    public JButton divided;
-    public JButton enter;
-    public JButton delete;
-    public JLabel calculatorInsertLabel;
+    Gui gui = new Gui();
 
     boolean minusClicked = false;
 
 
     //Constructor
-    public actions(JTextField textField,JLabel headerLabel, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
+    public actions(JTextField textField,JLabel label1, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
                    JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
                    JButton minus, JButton plus, JButton multi, JButton divided, JButton enter, JButton delete, JLabel calculatorInsertLabel) {
 
-        this.textField = textField;
-        this.headerLabel = headerLabel;
-        this.error_1 = error_1;
-        this.number1 = number1;
-        this.number2 = number2;
-        this.number3 = number3;
-        this.number4 = number4;
-        this.number5 = number5;
-        this.number6 = number6;
-        this.number7 = number7;
-        this.number8 = number8;
-        this.number9 = number9;
-        this.number0 = number0;
-        this.minus = minus;
-        this.plus = plus;
-        this.multi = multi;
-        this.divided = divided;
-        this.enter = enter;
-        this.delete = delete;
-        this.calculatorInsertLabel = calculatorInsertLabel;
+        gui.textField_1 = textField;
+        gui.label_1 = label1;
+        gui.error_1 = error_1;
+        gui.number1 = number1;
+        gui.number2 = number2;
+        gui.number3 = number3;
+        gui.number4 = number4;
+        gui.number5 = number5;
+        gui.number6 = number6;
+        gui.number7 = number7;
+        gui.number8 = number8;
+        gui.number9 = number9;
+        gui.number0 = number0;
+        gui.minus = minus;
+        gui.plus = plus;
+        gui.multi = multi;
+        gui.divided = divided;
+        gui.enter = enter;
+        gui.delete = delete;
+        gui.calculatorInsertLabel = calculatorInsertLabel;
     }
 
     public actions() {
-        textField = new JTextField();
+        gui.textField_1 = new JTextField();
     }
+
+    public actions(JTextField textField) {}
+
 
 
     /*Button 1 Action*/
     public void actionPerformed(ActionEvent e) {
 
-        String text = textField.getText();
+        String text = gui.textField_1.getText();
 
         if(text.equals("Calculator") || text.equals("calculator") || text.equals("taschenrechner") || text.equals("Taschenrechner") ){
 
-            error_1.setVisible(false);
-            number1.setVisible(true);
-            number2.setVisible(true);
-            number3.setVisible(true);
-            number4.setVisible(true);
-            number5.setVisible(true);
-            number6.setVisible(true);
-            number7.setVisible(true);
-            number8.setVisible(true);
-            number9.setVisible(true);
-            number0.setVisible(true);
-            minus.setVisible(true);
-            plus.setVisible(true);
-            multi.setVisible(true);
-            divided.setVisible(true);
-            enter.setVisible(true);
-            delete.setVisible(true);
-            calculatorInsertLabel.setVisible(true);
+            gui.error_1.setVisible(false);
+            gui.number1.setVisible(true);
+            gui.number2.setVisible(true);
+            gui.number3.setVisible(true);
+            gui.number4.setVisible(true);
+            gui.number5.setVisible(true);
+            gui.number6.setVisible(true);
+            gui.number7.setVisible(true);
+            gui.number8.setVisible(true);
+            gui.number9.setVisible(true);
+            gui.number0.setVisible(true);
+            gui.minus.setVisible(true);
+            gui.plus.setVisible(true);
+            gui.multi.setVisible(true);
+            gui.divided.setVisible(true);
+            gui.enter.setVisible(true);
+            gui.delete.setVisible(true);
+            gui.calculatorInsertLabel.setVisible(true);
 
-            headerLabel.setText("Calculator");
-            headerLabel.setBounds(500,50,100,20);
+            gui.label_1.setText("Calculator");
+            gui.label_1.setBounds(500,50,100,20);
 
             System.out.println("Calculator is open");
 
             /*Click number 1*/
-            number1.addActionListener(event -> {
-                String txt = calculatorInsertLabel.getText();
-                calculatorInsertLabel.setText(txt + "1");
+            gui.number1.addActionListener(event -> {
+                String txt = gui.calculatorInsertLabel.getText();
+                gui.calculatorInsertLabel.setText(txt + "1");
                 System.out.println(txt + "1");
             });
 
             /*Click number 2*/
-            number2.addActionListener(event -> {
-                String txt = calculatorInsertLabel.getText();
-                calculatorInsertLabel.setText(txt + "2");
+            gui.number2.addActionListener(event -> {
+                String txt = gui.calculatorInsertLabel.getText();
+                gui.calculatorInsertLabel.setText(txt + "2");
                 System.out.println(txt + "2");
             });
 
             /*Click number 3*/
-            number3.addActionListener(event -> {
-                String txt = calculatorInsertLabel.getText();
-                calculatorInsertLabel.setText(txt + "3");
+            gui.number3.addActionListener(event -> {
+                String txt = gui.calculatorInsertLabel.getText();
+                gui.calculatorInsertLabel.setText(txt + "3");
                 System.out.println(txt + "3");
             });
 
 
             /*Click minus*/
-            minus.addActionListener(event -> {
+            gui.minus.addActionListener(event -> {
 
-                String number1 = calculatorInsertLabel.getText();
+                String number1 = gui.calculatorInsertLabel.getText();
 
                 if(!minusClicked){
-                    calculatorInsertLabel.setText(number1 + " - ");
+                    gui.calculatorInsertLabel.setText(number1 + " - ");
                     System.out.println(number1 + " - ");
 
                     minusClicked = true;
 
-                } else if(!calculatorInsertLabel.getText().endsWith(" - ")) {
+                } else if(!gui.calculatorInsertLabel.getText().endsWith(" - ")) {
                     System.out.println("Zahl kann wieder eingegeben werden");
 
                     minusClicked = false;
@@ -138,49 +122,49 @@ public class actions implements ActionListener {
 
 
         }else if(!text.isBlank()){
-            error_1.setVisible(false);
+            gui.error_1.setVisible(false);
 
-            number1.setVisible(false);
-            number2.setVisible(false);
-            number3.setVisible(false);
-            number4.setVisible(false);
-            number5.setVisible(false);
-            number6.setVisible(false);
-            number7.setVisible(false);
-            number8.setVisible(false);
-            number9.setVisible(false);
-            number0.setVisible(false);
-            minus.setVisible(false);
-            plus.setVisible(false);
-            multi.setVisible(false);
-            divided.setVisible(false);
-            enter.setVisible(false);
-            delete.setVisible(false);
-            calculatorInsertLabel.setVisible(false);
+            gui.number1.setVisible(false);
+            gui.number2.setVisible(false);
+            gui.number3.setVisible(false);
+            gui.number4.setVisible(false);
+            gui.number5.setVisible(false);
+            gui.number6.setVisible(false);
+            gui.number7.setVisible(false);
+            gui.number8.setVisible(false);
+            gui.number9.setVisible(false);
+            gui.number0.setVisible(false);
+            gui.minus.setVisible(false);
+            gui.plus.setVisible(false);
+            gui.multi.setVisible(false);
+            gui.divided.setVisible(false);
+            gui.enter.setVisible(false);
+            gui.delete.setVisible(false);
+            gui.calculatorInsertLabel.setVisible(false);
 
             System.out.println("Test");
         }else{
-            error_1.setVisible(true);
+            gui.error_1.setVisible(true);
 
-            number1.setVisible(false);
-            number2.setVisible(false);
-            number3.setVisible(false);
-            number4.setVisible(false);
-            number5.setVisible(false);
-            number6.setVisible(false);
-            number7.setVisible(false);
-            number8.setVisible(false);
-            number9.setVisible(false);
-            number0.setVisible(false);
-            minus.setVisible(false);
-            plus.setVisible(false);
-            multi.setVisible(false);
-            divided.setVisible(false);
-            enter.setVisible(false);
-            delete.setVisible(false);
-            calculatorInsertLabel.setVisible(false);
+            gui.number1.setVisible(false);
+            gui.number2.setVisible(false);
+            gui.number3.setVisible(false);
+            gui.number4.setVisible(false);
+            gui.number5.setVisible(false);
+            gui.number6.setVisible(false);
+            gui.number7.setVisible(false);
+            gui.number8.setVisible(false);
+            gui.number9.setVisible(false);
+            gui.number0.setVisible(false);
+            gui.minus.setVisible(false);
+            gui.plus.setVisible(false);
+            gui.multi.setVisible(false);
+            gui.divided.setVisible(false);
+            gui.enter.setVisible(false);
+            gui.delete.setVisible(false);
+            gui.calculatorInsertLabel.setVisible(false);
 
-            headerLabel.setVisible(false);
+            gui.label_1.setVisible(false);
 
             System.out.println("Keine Angaben wurden gemacht");
         }
