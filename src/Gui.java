@@ -14,7 +14,7 @@ public class Gui extends JFrame{
     public JTextField textField_1;
 
     //Calculator Objects
-    public static String calulatorInsert = "";
+    public static String calculatorInsert = "";
 
     public JButton number0;
     public JButton number1;
@@ -41,7 +41,6 @@ public class Gui extends JFrame{
     //View
     public void createView(){
 
-        actions a = new actions();
         textField_1 = createTextField();
 
         //JTextField textField_1 = createTextField();
@@ -70,8 +69,7 @@ public class Gui extends JFrame{
 
 
 
-        JButton button_1 = createButton(textField_1,label_1,error_1, number1,number2,number3,number4,number5,number6,number7,
-                number8,number9,number0,minus,plus,multi,divided,enter,delete, calculatorInsertLabel);
+        JButton button_1 = createButton();
 
         /*Fenster View*/
         jf.setTitle("Test Fenster");
@@ -128,10 +126,7 @@ public class Gui extends JFrame{
     }
 
     /* Button 1 : size/visibility */
-    public JButton createButton
-    (JTextField textField, JLabel headerLabel,JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
-     JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
-     JButton minus, JButton plus, JButton multi, JButton divided, JButton enter,JButton delete, JLabel calculatorInsertLabel){
+    public JButton createButton(){
 
         JButton button_1 = new JButton("Button 1");
 
@@ -140,7 +135,7 @@ public class Gui extends JFrame{
         button_1.setFocusable(false); //No focus anymore
 
         //Connect to actions
-        button_1.addActionListener(new actions(textField,headerLabel,error_1,number1,number2,number3,number4,number5,number6,number7,
+        button_1.addActionListener(new actions(textField_1,label_1,error_1,number1,number2,number3,number4,number5,number6,number7,
                 number8,number9,number0,minus,plus,multi,divided,enter,delete, calculatorInsertLabel));
 
         return button_1;
@@ -191,7 +186,7 @@ public class Gui extends JFrame{
 
     /* Automatic Label: size/visibility */
     public JLabel calculatorInsert(){
-        calculatorInsertLabel = new JLabel(calulatorInsert);
+        calculatorInsertLabel = new JLabel(calculatorInsert);
 
         calculatorInsertLabel.setBounds(450, 100, 200, 20);
 
