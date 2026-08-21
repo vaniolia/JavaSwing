@@ -10,9 +10,13 @@ public class actions implements ActionListener {
 
 
     //Constructor
-    public actions(JTextField textField,JLabel label1, JLabel error_1, JButton number1,JButton number2, JButton number3,JButton number4,
-                   JButton number5, JButton number6, JButton number7, JButton number8, JButton number9, JButton number0,
-                   JButton minus, JButton plus, JButton multi, JButton divided, JButton enter, JButton delete, JLabel calculatorInsertLabel) {
+
+    public actions() {
+
+    }
+
+    public actions(JTextField textField,JLabel label1, JLabel error_1,JButton number1,JButton number2,JButton number3,JButton number4,JButton number5,JButton number6,JButton number7,
+                   JButton number8,JButton number9,JButton number0,JButton minus,JButton plus,JButton multi,JButton divided,JButton enter,JButton delete, JLabel calculatorInsertLabel) {
 
         gui.textField_1 = textField;
         gui.label_1 = label1;
@@ -35,12 +39,6 @@ public class actions implements ActionListener {
         gui.delete = delete;
         gui.calculatorInsertLabel = calculatorInsertLabel;
     }
-
-    public actions() {
-        gui.textField_1 = new JTextField();
-    }
-
-    public actions(JTextField textField) {}
 
 
 
